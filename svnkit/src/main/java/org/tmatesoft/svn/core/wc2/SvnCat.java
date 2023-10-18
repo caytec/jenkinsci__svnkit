@@ -1,6 +1,7 @@
 package org.tmatesoft.svn.core.wc2;
 
 import java.io.OutputStream;
+import java.nio.file.Files;
 
 import org.tmatesoft.svn.core.SVNErrorCode;
 import org.tmatesoft.svn.core.SVNException;
@@ -37,7 +38,7 @@ import org.tmatesoft.svn.core.wc.SVNRevision;
  *             <li>exception with {@link SVNErrorCode#UNVERSIONED_RESOURCE}
  *             error code - if <code>target</code> is not under version control
  *             <li>it's impossible to create temporary files (
- *             {@link java.io.File#createTempFile(java.lang.String,java.lang.String)
+ *             {@link Files#createTempFile(java.lang.String, java.lang.String)#toFile()
  *             createTempFile()}fails) necessary for file translating (used when <code>target</code> is URL)
  *             </ul>
  * 

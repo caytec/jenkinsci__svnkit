@@ -16,6 +16,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.file.Files;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -260,7 +261,7 @@ public class SpoolFile {
         }
         
         private File createNextFile() throws IOException {
-            File file = File.createTempFile("svnkit.", ".spool", myDirectory);
+            File file = Files.createTempFile(myDirectory.toPath(), "svnkit.", ".spool").toFile();
             file.createNewFile();
             return file;
         }

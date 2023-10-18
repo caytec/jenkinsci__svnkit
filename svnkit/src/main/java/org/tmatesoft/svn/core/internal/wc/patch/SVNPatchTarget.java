@@ -457,7 +457,7 @@ public class SVNPatchTarget {
             final String basePath = baseFile.getCanonicalPath();
             final File childFile = new File(basePath, file.getPath());
             final String childPath = childFile.getCanonicalPath();
-            return childPath.startsWith(basePath) && childPath.length() > basePath.length();
+            return childFile.getCanonicalFile().toPath().startsWith(basePath) && childPath.length() > basePath.length();
         }
         return false;
     }
@@ -466,7 +466,7 @@ public class SVNPatchTarget {
         if (null != childPath && basePath != null) {
             final String base = basePath.getCanonicalPath();
             final String child = childPath.getCanonicalPath();
-            if (child.startsWith(base) && child.length() > base.length()) {
+            if (childPath.getCanonicalFile().toPath().startsWith(base) && child.length() > base.length()) {
                 String substr = child.substring(base.length());
                 File subPath = new File(substr);
                 if (!subPath.isAbsolute()) {

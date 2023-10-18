@@ -30,6 +30,7 @@ import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
 import java.nio.channels.FileChannel;
 import java.nio.charset.CharsetDecoder;
+import java.nio.file.Files;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Map;
@@ -1977,7 +1978,7 @@ public class SVNFileUtil {
     public static File createTempDirectory(String name) throws SVNException {
         File tmpFile = null;
         try {
-            tmpFile = File.createTempFile("svnkit" + name, ".tmp");
+            tmpFile = Files.createTempFile("svnkit" + name, ".tmp").toFile();
         } catch (IOException e) {
             SVNErrorMessage err = SVNErrorMessage.create(SVNErrorCode.IO_ERROR, "Cannot create temporary directory: {0}", e.getMessage());
             SVNErrorManager.error(err, e, Level.FINE, SVNLogType.DEFAULT);
@@ -1995,7 +1996,7 @@ public class SVNFileUtil {
             if (prefix.length() < 3) {
                 prefix = "svn" + prefix;
             }
-            tmpFile = File.createTempFile(prefix, suffix);
+            tmpFile = Files.createTempFile(prefix, suffix).toFile();
         } catch (IOException e) {
             SVNErrorMessage err = SVNErrorMessage.create(SVNErrorCode.IO_ERROR, "Cannot create temporary file: {0}", e.getMessage());
             SVNErrorManager.error(err, e, Level.FINE, SVNLogType.DEFAULT);

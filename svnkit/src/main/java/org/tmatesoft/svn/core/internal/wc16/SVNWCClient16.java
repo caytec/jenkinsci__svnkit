@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -421,7 +422,7 @@ public class SVNWCClient16 extends SVNBasicDelegate {
      *             <ul>
      *             <li><code>url</code> refers to a directory
      *             <li>it's impossible to create temporary files (
-     *             {@link java.io.File#createTempFile(java.lang.String,java.lang.String)
+     *             {@link Files#createTempFile(java.lang.String, java.lang.String)#toFile()
      *             createTempFile()}fails) necessary for file translating
      *             </ul>
      * @see #doGetFileContents(File,SVNRevision,SVNRevision,boolean,OutputStream)

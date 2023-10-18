@@ -14,6 +14,7 @@ package org.tmatesoft.svn.core.internal.wc;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -634,7 +635,7 @@ public class SVNDiffEditor implements ISVNEditor {
     private File createTempFile() throws SVNException {
         File tmpFile = null;
         try {
-            return File.createTempFile("diff.", ".tmp", getTempDirectory());
+            return Files.createTempFile(getTempDirectory().toPath(), "diff.", ".tmp").toFile();
         } catch (IOException e) {
             SVNFileUtil.deleteFile(tmpFile);
             SVNErrorMessage err = SVNErrorMessage.create(SVNErrorCode.IO_ERROR, e.getMessage());

@@ -15,6 +15,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.file.Files;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
@@ -360,7 +361,7 @@ public class SVNNodeEditor implements ISVNEditor {
     private File createTempFile(ISVNDiffGenerator generator) throws SVNException {
         File tmpFile = null;
         try {
-            return File.createTempFile("diff.", ".tmp", getTempDirectory(generator));
+            return Files.createTempFile(getTempDirectory(generator).toPath(), "diff.", ".tmp").toFile();
         } catch (IOException e) {
             SVNFileUtil.deleteFile(tmpFile);
             SVNErrorMessage err = SVNErrorMessage.create(SVNErrorCode.IO_ERROR, e.getMessage());

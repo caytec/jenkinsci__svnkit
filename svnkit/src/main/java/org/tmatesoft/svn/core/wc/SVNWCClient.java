@@ -13,6 +13,7 @@ package org.tmatesoft.svn.core.wc;
 
 import java.io.File;
 import java.io.OutputStream;
+import java.nio.file.Files;
 import java.util.Collection;
 
 import org.tmatesoft.svn.core.SVNCommitInfo;
@@ -357,7 +358,7 @@ public class SVNWCClient extends SVNBasicClient {
      *             <ul>
      *             <li><code>url</code> refers to a directory
      *             <li>it's impossible to create temporary files (
-     *             {@link java.io.File#createTempFile(java.lang.String,java.lang.String)
+     *             {@link Files#createTempFile(java.lang.String, java.lang.String)#toFile()
      *             createTempFile()} fails) necessary for file translating
      *             </ul>
      * @see #doGetFileContents(File,SVNRevision,SVNRevision,boolean,OutputStream)
